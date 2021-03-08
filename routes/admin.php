@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::middleware('auth:admin')->group(function(){
     })->name('admin.dashboard');
     Route::resource('categories',CategoryController::class);
     Route::resource('products',ProductController::class);
+    Route::resource('banners',BannerController::class);
 });
 
 Route::fallback(function(){

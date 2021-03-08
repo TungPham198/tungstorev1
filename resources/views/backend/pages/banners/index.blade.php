@@ -4,7 +4,7 @@
         <div class="mt-5">
             <div>
                 <h2 class="font-24" style="display: inline-block;">Product List</h2>
-                <a href="{{route('products.create')}}" class="btn btn-primary btn-bordered-primary">Add</a>
+                <a href="{{route('banners.create')}}" class="btn btn-primary btn-bordered-primary">Add</a>
             </div>
             <br> @if(session('add_success'))
             <p class="text-success text-center">
@@ -25,40 +25,31 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Name</th>
                             <th>Image</th>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Amount</th>
+                            <th>Link</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i=1 ?> @foreach($results as $product)
+                        <?php $i=1 ?> @foreach($banners as $banner)
                         <tr>
                             <!-- explode( " \\ ",$product->images)[0]) -->
                             <!-- $image = split(".",$product->images); -->
                             <th scope="row">{{ $i }}</th>
                             <td>
-                                <img width="200px" src='upload/{{ explode("\\",$product->images)[0] }}' alt=""></td>
-                            <td>
-                                <p>Mã sản phẩm: {{ $product->sku }}</p>
-                                <p>Tên sản phẩm: {{ $product->name }}</p>
-                                <p>Danh muc: {{ $product->category->name }}</p>
-                                <p>Trạng thái: {{ $product->status==1?'Hết hàng ':'Còn hàng ' }}</p>
+                                <p>{{ $banner->name }}</p>
                             </td>
                             <td>
-                                <p>Giá bán: {{ $product->price }}</p>
-                                <p>Giá nhập: {{ $product->import_price }}</p>
-                            </td>
+                                <img width="200px" src='upload/banners/{{ $banner->image }}' alt="{{ $banner->image }}"></td>
                             <td>
-                                <p>Số lượng còn: {{ $product->amount }}</p>
-                                <p>Số lượng bán: {{ $product->sold_amount }}</p>
+                                <p>{{ $banner->link }}</p>
                             </td>
                             <td style="width: 20%;">
                                 <div class="row d-plex justify-content-center">
-                                    <a href="" class="mr-3"><i class="mdi mdi-pencil-box-multiple-outline text-primary"></i><span> Sửa </span></a>
+                                    <a href="{{ route('banners.edit',['banner' => $banner->id]) }}" class="mr-3"><i class="mdi mdi-pencil-box-multiple-outline text-primary"></i><span> Sửa </span></a>
                                     <a href="javascript:void(0);" onclick="if (confirm('Xác nhận xoá ')) { $(this).find('form ').submit();}">
-                                        <form action="{{ route('products.destroy',['product' => $product->id]) }}" method="post">
+                                        <form action="{{ route('banners.destroy',['banner' => $banner->id]) }}" method="post">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                         </form>

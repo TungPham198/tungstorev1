@@ -41,7 +41,7 @@
             </li>
 
             <li>
-                <a href="ui-elements.html">
+                <a href="{{ route('banners.index') }}">
                     <i class="ti-layout-slider-alt"></i>
                     <span> Banners</span>
                     <!-- <span class="badge badge-primary float-right">11</span> -->

@@ -91,6 +91,12 @@ class BaseRepository implements BaseInterface
         return $instance->paginate($count);
     }
 
+    public function orderBy($key,$type)
+    {
+        $instance = $this->getNewInstance();
+        return $instance->orderBy($key,$type)->get();
+    }
+
     /**
      * Find resource using key and value
      *

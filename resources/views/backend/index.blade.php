@@ -9,10 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets\images\favicon.ico">
+    <link href="assets\libs\summernote\summernote-bs4.css" rel="stylesheet" type="text/css">
     <!-- App css -->
     <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
     <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
     <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+
+
 
 </head>
 
@@ -55,7 +58,6 @@
     <script src="assets\js\vendor.min.js"></script>
 
     @yield('admin_js')
-
     <!-- App js -->
     <script src="assets\js\app.min.js"></script>
 
