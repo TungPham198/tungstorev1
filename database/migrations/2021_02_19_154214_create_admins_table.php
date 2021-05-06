@@ -26,9 +26,16 @@ class CreateAdminsTable extends Migration
             $table->string('birthday', 255)->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->rememberToken();
-            $table->integer('status')->default(config('constants.STATUS.ACTIVATE'));
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
+
+        DB::table('admins')->insert([
+            'name' => 'Admin',
+            'email' => 'tung@gmail.com',
+            'password' => bcrypt('123456'),
+            'status' => 1,
+        ]);
     }
 
     /**

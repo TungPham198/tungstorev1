@@ -1,4 +1,5 @@
 @extends('backend.index') @section('content')
+
 <script src="{{ asset('assets/ckeditor/ckeditor/ckeditor.js') }}"></script>
 <div class="row">
     <div class="col-lg-6">
@@ -76,9 +77,13 @@
                 </div>
 
                 <div class="form-group">
-                    <p>Default file input</p>
-                    <input value="{{ old( 'image')}}" name="images[]" type="file" class="filestyle" multiple>
+                    <label class="control-label text-capitalize">Images</label>
+                    <div class="input-images-1" id="dropzone" style="padding-top: .5rem;"></div>
+                    @if($errors->has('images'))
+                    <p class="text-danger mt-2">{{ $errors->first('images') }}</p>
+                    @endif
                 </div>
+
                 <div class="form-group row">
                     <!-- <label class="col-md-2 col-form-label" for="example-textarea">Description: </label> -->
                     <div class="col-md-10" style="width: 100%;flex: 0 0 100%; max-width: 100%;">
@@ -93,7 +98,18 @@
         </div>
     </div>
 </div>
+
 <script>
     CKEDITOR.replace('example-textarea');
+</script>
+@endsection @section('admin_js')
+<script src="assets\libs\select2\js\select2.min.js"></script>
+<script src="assets\libs\dropzone\dropzone.min.js"></script>
+<script>
+    $('.input-images-1').imageUploader({
+        imagesInputName: 'images',
+        preloadedInputName: 'preloaded',
+        label: "{{ trans('dashboard.label.placeholder_image') }}"
+    });
 </script>
 @endsection

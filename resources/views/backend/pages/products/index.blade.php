@@ -39,7 +39,7 @@
                             <!-- $image = split(".",$product->images); -->
                             <th scope="row">{{ $i }}</th>
                             <td>
-                                <img width="200px" src='upload/{{ explode("\\",$product->images)[0] }}' alt=""></td>
+                                <img width="200px" src='upload/products/{{ explode("\\",$product->images)[0] }}' alt=""></td>
                             <td>
                                 <p>Mã sản phẩm: {{ $product->sku }}</p>
                                 <p>Tên sản phẩm: {{ $product->name }}</p>
@@ -56,7 +56,7 @@
                             </td>
                             <td style="width: 20%;">
                                 <div class="row d-plex justify-content-center">
-                                    <a href="" class="mr-3"><i class="mdi mdi-pencil-box-multiple-outline text-primary"></i><span> Sửa </span></a>
+                                    <a href="{{ route('products.edit',['product'=>$product->id]) }}" class="mr-3"><i class="mdi mdi-pencil-box-multiple-outline text-primary"></i><span> Sửa </span></a>
                                     <a href="javascript:void(0);" onclick="if (confirm('Xác nhận xoá ')) { $(this).find('form ').submit();}">
                                         <form action="{{ route('products.destroy',['product' => $product->id]) }}" method="post">
                                             @csrf

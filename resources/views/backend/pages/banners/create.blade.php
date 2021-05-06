@@ -20,8 +20,11 @@
                 </div>
 
                 <div class="form-group">
-                    <p>Default image input</p>
-                    <input value="{{ old( 'image')}}" name="image" type="file" class="filestyle" multiple>
+                    <label class="control-label text-capitalize">Images</label>
+                    <div class="input-images-1" id="dropzone" style="padding-top: .5rem;"></div>
+                    @if($errors->has('image'))
+                    <p class="text-danger mt-2">{{ $errors->first('image') }}</p>
+                    @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -30,5 +33,17 @@
 </div>
 <script>
     CKEDITOR.replace('example-textarea');
+</script>
+@endsection
+
+ @section('admin_js')
+<script src="assets\libs\select2\js\select2.min.js"></script>
+<script src="assets\libs\dropzone\dropzone.min.js"></script>
+<script>
+    $('.input-images-1').imageUploader({
+        imagesInputName: 'image',
+        preloadedInputName: 'preloaded',
+        label: "{{ trans('dashboard.label.placeholder_image') }}"
+    });
 </script>
 @endsection

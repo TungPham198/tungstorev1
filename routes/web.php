@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    dd(bcrypt('123456'));
 });
 Route::get('test',function(){
     return view('backend.pages.dashboard');

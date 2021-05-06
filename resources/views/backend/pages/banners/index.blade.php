@@ -32,9 +32,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i=1 ?> @foreach($banners as $banner)
+                        <?php $i=1 ?> @foreach($results as $banner)
                         <tr>
-                            <!-- explode( " \\ ",$product->images)[0]) -->
+                            <!-- explode( " \\ ",$banner->images)[0]) -->
                             <!-- $image = split(".",$product->images); -->
                             <th scope="row">{{ $i }}</th>
                             <td>
